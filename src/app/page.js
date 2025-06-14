@@ -306,8 +306,9 @@ ref={leftContentRef}
   ref={imageSectionRef}
   className={`bg-white rounded-2xl shadow-lg px-8 py-6 flex items-center justify-center outline-1 outline-gray-200 transition-opacity duration-1000 ${lineVisible ? "opacity-100" : "opacity-0"} md:max-w-[400px]: w-full`}
 >
-  <span className="text-black text-lg font-bold font-mono whitespace-pre-line text-center w-full">
-    Since 2020, I've been constantly sharpening my skills. For others, computers might not seem like much. For me, It's life   </span>
+ <span className="text-black text-lg font-bold font-mono whitespace-pre-line text-center w-full">
+  Since 2020, I&apos;ve been constantly sharpening my skills. For others, computers might not seem like much. For me, It&apos;s life
+</span>
   <div className="flex gap-4 justify-center w-full flex-wrap">
     {[
       "/imagepro1.jpeg",
