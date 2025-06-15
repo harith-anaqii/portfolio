@@ -22,7 +22,7 @@ export default function BigBlackCube() {
     const edges = new THREE.EdgesGeometry(geometry);
     const line = new THREE.LineSegments(
       edges,
-      new THREE.LineBasicMaterial({ color: 0xBDC5C5, linewidth: 1 })
+      new THREE.LineBasicMaterial({ color: 0xF8FFE5, linewidth: 1 })
     );
     scene.add(line);
 

@@ -171,7 +171,7 @@ useEffect(() => {
 
         {/* Left div (will be at the bottom on mobile, left on desktop) */}
 <div className="flex-1 bg-white flex flex-col items-center justify-center min-h-[50vh]" 
-id="left-content"
+id="left-content" style={{backgroundColor: 'lightyellow'}}
 ref={leftContentRef}
 >
 
@@ -195,8 +195,8 @@ ref={leftContentRef}
         {/* Right div (will be at the top on mobile, right on desktop) */}
   <div
     id="right-content"
-    className="overflow-hidden flex-none w-full md:flex-1 flex flex-col justify-center items-center bg-white min-h-screen antialiased [text-rendering:optimizeLegibility] [font-smoothing:antialiased] [font-smooth:always] md:text-right text-center"
-    style={{ minWidth: 0 }}
+    className="overflow-hidden flex-none w-full md:flex-1 flex flex-col justify-center items-center bg-emerald-500 min-h-screen antialiased [text-rendering:optimizeLegibility] [font-smoothing:antialiased] [font-smooth:always] md:text-right text-center"
+    style={{ minWidth: 0, backgroundColor: '#06D6A0' }}
   >
     <div className="overflow-hidden absolute md:left-500 right-0 top-140 h-[200px] w-[200px]  pointer-events-none z-0 rotate-180 transition-opacity duration-1000 ">
     <BigBlackCube />
@@ -210,30 +210,19 @@ ref={leftContentRef}
 </div>
 
 {/* Animated diagonal line: bottom left to top right (grows in) */}
-<div className="absolute left-0 bottom-0 h-[60vh] md:h-[45vh] w-screen pointer-events-none z-10">
+<div className="absolute left-0 bottom-0 h-[60vh] md:h-[45vh] w-screen pointer-events-none z-0">
   <div className="absolute left-0 bottom-0 w-full h-full pointer-events-none">
     <div
-      className="animate-diagonal-grow origin-bottom-left bg-gray-300"
+      className="animate-diagonal-grow origin-bottom-left "
       style={{
         width: "1px",
         height: "100%",
+        backgroundColor: "lightyellow",
       }}
     />
   </div>
 </div>
 
-{/* Diagonal line: bottom left to top right */}
-<div className="absolute left-0 bottom-0 h-[60vh] md:h-[45vh] w-screen pointer-events-none z-10">
-  <div className="absolute left-0 bottom-0 w-full h-full pointer-events-none">
-    <div
-      className="animate-diagonal-grow origin-bottom-left bg-gray-300"
-      style={{
-        width: "1px",
-        height: "100%",
-      }}
-    />
-  </div>
-</div>
 
 
 
@@ -242,25 +231,26 @@ ref={leftContentRef}
   <div className="absolute left-0 bottom-0 w-full h-full pointer-events-none">
 
     <div
-      className="animate-diagonal-grow origin-bottom-left bg-gray-300"
+      className="animate-diagonal-grow origin-bottom-left "
       style={{
         width: "1px",
         height: "100%",
+        backgroundColor: "lightyellow",
       }}
     />
   </div>
 </div>
 
-          <h2 className="bg-black text-lg md:text-3xl font-bold mb-4 transition-opacity duration-1000 text-white antialiased">
+          <h2 className="bg-black text-lg md:text-3xl font-bold mb-1 transition-opacity duration-1000 text-white antialiased" style={{color: '#06D6A0' , backgroundColor: 'lightyellow'}}>
             ⚠️EARLY ACCESS
           </h2>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-4 transition-opacity duration-1000 text-black antialiased">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-4 transition-opacity duration-1000 text-white antialiased" style={{color: 'lightyellow'}}>
             HELLO MY NAME IS
           </h2>
           <h1
             className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text transition-opacity duration-1000 antialiased"
             style={{
-              WebkitTextStroke: '2px black'
+              WebkitTextStroke: '2px lightyellow'
             }}
           >
             <span className={showHarith ? "opacity-100 transition-opacity duration-1000 antialiased" : "opacity-0 transition-opacity duration-1000 antialiased"}>
