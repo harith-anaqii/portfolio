@@ -13,6 +13,8 @@ export const metadata = {
     icon: '/logopng.png', // or '/favicon.png'
   },
   description: "A portfolio showcasing my work and skills",
+  viewport: "width=device-width, initial-scale=1.0",
+  colorScheme:"light",
 };
 
 export default function RootLayout({ children }) {

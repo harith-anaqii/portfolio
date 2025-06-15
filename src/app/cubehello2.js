@@ -5,6 +5,8 @@ import * as THREE from "three";
 export default function BigBlackCube2() {
   const mountRef = useRef(null);
 
+
+  
   useEffect(() => {
     // Scene setup
     const scene = new THREE.Scene();

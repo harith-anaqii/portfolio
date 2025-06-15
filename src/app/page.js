@@ -123,7 +123,7 @@ useEffect(() => {
     }
   }, [lineVisible, typedText]);
 
-  return (
+  return (  
     <main className=" overflow-hidden min-h-screen bg-white font-poppins text-white flex flex-col items-stretch ">
       <div
         className={`
