@@ -2,10 +2,18 @@
 "use client";
 //regenerate this page every 60 seconds
 
+
+
 import { use, useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+
 import BigBlackCube from "./cubehello";
 import BigBlackCube2 from "./cubehello2";
+
+
+
 export default function Home() {
+
   const [open, setOpen] = useState(false);
   const [showHarith, setShowHarith] = useState(false);
   const [showAnaqi, setShowAnaqi] = useState(false);
@@ -17,6 +25,8 @@ export default function Home() {
      const leftContentRef = useRef(null);
       const [imageVisible, setImageVisible] = useState(false);
   const imageSectionRef = useRef(null);
+
+
 
   useEffect(() => {
     const timeout1 = setTimeout(() => setShowHarith(true), 200);
@@ -280,7 +290,7 @@ ref={leftContentRef}
             </div>
           </div>
           <div className={`bg-white rounded-2xl shadow-lg px-8 py-6 flex items-center justify-center outline-1 outline-gray-200 transition-opacity duration-1000 ${lineVisible ? "opacity-100" : "opacity-0"} md:max-w-[400px]: w-full`}>
-            <span className="text-black text-lg font-bold font-mono whitespace-pre-line text-center w-full">
+            <span className="text-black text-lg font-bold font-poppins whitespace-pre-line text-center w-full">
               {typedText}
               {lineVisible && typedText.length < 10 && <span className="animate-pulse">|</span>}
             </span>
@@ -296,17 +306,17 @@ ref={leftContentRef}
   ref={imageSectionRef}
   className={`bg-white rounded-2xl shadow-lg px-8 py-6 flex items-center justify-center outline-1 outline-gray-200 transition-opacity duration-1000 ${lineVisible ? "opacity-100" : "opacity-0"} md:max-w-[400px]: w-full`}
 >
- <span className="text-black text-lg font-bold font-mono whitespace-pre-line text-center w-full">
-  Since 2020, I&apos;ve been constantly sharpening my skills. For others, computers might not seem like much. For me, It&apos;s life
+ <span className="text-black text-lg font-bold font-poppins whitespace-pre-line text-center w-full ">
+  These are my projects. Although it may seem like these projects aren't programs specifically, a lot of these projects do involve code.
 </span>
   <div className="flex gap-4 justify-center w-full flex-wrap">
     {[
-      "/imagepro1.jpeg",
-      "/imagepro2.jpeg",
-      "/imagepro3.jpeg",
-      "/imagepro4.jpeg",
-      "/imagepro5.jpeg",
-      "/imagepro6.jpeg",
+    "/ehr.jpeg",
+    "/fras.jpeg",
+    "/matplotlibgraph.jpeg",
+    "/esp32light.jpeg",
+    "/weatheroled.jpeg",
+    "/drone.jpeg",
     ].map((src, idx) => (
       <div
         key={src}
