@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "daisyui";
+
 
 :root {
   --background: #ffffff;
@@ -13,6 +15,8 @@
     --foreground: #ededed;
   }
 }
+
+
 
 html, body {
   overflow-x: hidden;

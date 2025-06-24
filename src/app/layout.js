@@ -10,7 +10,7 @@ const poppins = Poppins({
 export const metadata = {
   title: "Portfolio",
    icons: {
-    icon: '/logopng.png', // or '/favicon.png'
+    icon: '/logo.ico', // or '/favicon.png'
   },
   description: "A portfolio showcasing my work and skills",
   viewport: "width=device-width, initial-scale=1.0",
