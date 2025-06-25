@@ -137,7 +137,7 @@ useEffect(() => {
         </figure>
         <div className="card-body text-white">
           <h2 className="card-title underline">Programming (2017/2020)</h2>
-          <p>My journey into computers began as a passion project back in 2017 where I used to salvage scrapped computers which opened me opportunities to grow more into programming in 2020 and further motivate myself to learn various languages and frameworks. I'm passionate about building intuitive UIs and always eager to collaborate on innovative projects and contribute to a team's growth </p>
+          <p>{"My journey into computers began as a passion project back in 2017 where I used to salvage scrapped computers which opened me opportunities to grow more into programming in 2020 and further motivate myself to learn various languages and frameworks. I m passionate about building intuitive UIs and always eager to collaborate on innovative projects and contribute to a team's growth"} </p>
           <div className="card-actions justify-end">
 
           </div>
@@ -154,7 +154,7 @@ useEffect(() => {
         </figure>
         <div className="card-body text-white">
           <h2 className="card-title  underline">Aquascaping (2019)</h2>
-          <p>My creative outlet and a journey into living art. I'm dedicated to crafting beautiful and balanced underwater ecosystems</p>
+          <p>{"My creative outlet and a journey into living art. I'm dedicated to crafting beautiful and balanced underwater ecosystems"}</p>
           <div className="card-actions justify-end">
             
           </div>
@@ -171,7 +171,7 @@ useEffect(() => {
         </figure>
     t    <div className="card-body text-white">
           <h2 className="card-title underline">Photography (2022)</h2>
-          <p>For me, photography is an art form a means to interpret and present the beauty I find in the world. I'm drawn to nature's beauty and strive to create images that resonate and tell a compelling story. </p>
+          <p>{"For me, photography is an art form a means to interpret and present the beauty I find in the world. I'm drawn to nature's beauty and strive to create images that resonate and tell a compelling story."} </p>
           <div className="card-actions justify-end">
        
           </div>
