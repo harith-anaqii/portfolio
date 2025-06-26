@@ -5,14 +5,30 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
-import BigBlackCube from "./cubehello";
-import BigBlackCube2 from "./cubehello2";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function Home() {
   const [navVisible, setNavVisible] = useState(false);
   const profileRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+  
+    const roles = gsap.utils.toArray(".role");
+    const tl = gsap.timeline({ repeat: -1, defaults: { ease: "power2.inOut" } });
+  
+    roles.forEach((role, i) => {
+      tl.set(roles, { autoAlpha: 0, y: 20 }) // hide all
+        .to(role, { autoAlpha: 1, y: 0, duration: 0.6 })
+        .to(role, { autoAlpha: 0, y: -20, duration: 0.6 }, "+=1.8");
+    });
+  
+    return () => tl.kill();
+  }, []);
+  
+
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -41,6 +57,69 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const mm = gsap.matchMedia();
+  
+    mm.add("(max-width: 768px)", () => {
+      // MOBILE VIEW: Each card slides in horizontally
+      gsap.from(".card-1", {
+        scrollTrigger: {
+          trigger: ".card-1",
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+        x: -150,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+  
+      gsap.from(".card-2", {
+        scrollTrigger: {
+          trigger: ".card-2",
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+        x: 150,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+  
+      gsap.from(".card-3", {
+        scrollTrigger: {
+          trigger: ".card-3",
+          start: "top 90%",
+          toggleActions: "play none none none",
+        },
+        x: -150,
+        opacity: 0,
+        duration: 1,
+        ease: "power2.out",
+      });
+    });
+  
+    mm.add("(min-width: 769px)", () => {
+      // DESKTOP VIEW: All cards slide in from bottom when #Skills comes into view
+      gsap.from([".card-1", ".card-2", ".card-3"], {
+        scrollTrigger: {
+          trigger: "#Skills",
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.3,
+        ease: "power2.out",
+      });
+    });
+  
+    return () => mm.revert(); // Clean up matchMedia listeners
+  }, []);
+  
+
+
   return (
     <main className="overflow-hidden min-h-screen bg-white font-satoshi text-white flex flex-col items-stretch">
       {/* Navbar */}
@@ -59,25 +138,20 @@ export default function Home() {
           />
         </div>
 
-        <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn bg-white text-black m-1">
-            Menu
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow rounded-box w-52 bg-white text-black"
-          >
-            <li>
-              <a href="#Biodata">Biodata</a>
-            </li>
-            <li>
-              <a href="#Skills">Skills</a>
-            </li>
-            <li>
-              <a href="#Hero">Top</a>
-            </li>
-          </ul>
-        </div>
+        <div className="dropdown dropdown-end bg-transparent">
+  <div tabIndex={0} role="button" className="btn bg-white/0  border border-white/30 backdrop-blur text-black m-1">
+    =
+  </div>
+  <ul
+    tabIndex={0}
+    className="dropdown-content z-50 menu p-2 shadow-xl rounded-box w-52 bg-white  text-black border border-white/20"
+  >
+    <li><a href="#Biodata">Biodata</a></li>
+    <li><a href="#Skills">Skills</a></li>
+    <li><a href="#Hero">Top</a></li>
+  </ul>
+</div>
+
       </div>
 
       {/* Hero Section */}
@@ -92,8 +166,15 @@ export default function Home() {
             <h1 className="split-text mb-5 text-6xl font-bold text-white">
               HARITH <br /> ANAQI
             </h1>
-            <p className="mb-5">A Web Developer, Photographer and an Aquascaper.</p>
-            <button className="btn bg-white text-black outline-gray-100">See my work</button>
+            <div className="mb-5 h-10 overflow-hidden relative text-lg font-medium text-white">
+  <div className="animated-roles relative w-full text-center">
+    <div className="role absolute w-full top-0">A Web Developer</div>
+    <div className="role absolute w-full top-0">A Photographer</div>
+    <div className="role absolute w-full top-0">An Aquascaper</div>
+  </div>
+</div>
+
+            <button className="btn bg-white/70 backdrop-blur-md text-black border border-white/20 text-black outline-gray-100 ">See my work</button>
           </div>
         </div>
       </div>
@@ -120,7 +201,7 @@ export default function Home() {
           </span>
           <div className="w-full max-w-6xl flex flex-wrap justify-center gap-6">
             {/* Card 1 */}
-            <div className="card w-80 bg-white/10 backdrop-blur shadow-sm">
+            <div className="card card-1 w-80 bg-white/10 backdrop-blur shadow-sm border border-white/40">
               <figure>
                 <Image src="/ehr.jpeg" alt="Programming" width={320} height={180} />
               </figure>
@@ -135,7 +216,7 @@ export default function Home() {
             </div>
 
             {/* Card 2 */}
-            <div className="card w-80 bg-white/10 backdrop-blur shadow-sm">
+            <div className="card card-2 w-80 bg-white/10 backdrop-blur shadow-sm  border border-white/30">
               <figure>
                 <Image
                   src="/aquascape.jpg"
@@ -144,7 +225,7 @@ export default function Home() {
                   height={180}
                 />
               </figure>
-              <div className="card-body text-white">
+              <div className="card-body text-white ">
                 <h2 className="card-title underline">Aquascaping (2019)</h2>
                 <p>
                   {
@@ -155,7 +236,7 @@ export default function Home() {
             </div>
 
             {/* Card 3 */}
-            <div className="card w-80 bg-white/10 backdrop-blur shadow-sm">
+            <div className="card card-3 w-80 bg-white/10 backdrop-blur shadow-sm border border-white/30">
               <figure>
                 <Image
                   src="/imagepro2.jpeg"
@@ -212,7 +293,7 @@ export default function Home() {
             height={400}
           />
 
-          <div className="card w-full max-w-xl bg-white/10 backdrop-blur shadow-sm p-6 text-white">
+          <div className="card w-full max-w-xl bg-white/10 backdrop-blur shadow-sm p-6 text-white border border-white/40">
             <div className="text-center lg:text-left">
               <h1 className="text-3xl font-bold underline mb-4">
                 HARITH ANAQI BIN MOHD HANAFI
