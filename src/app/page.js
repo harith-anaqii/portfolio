@@ -60,64 +60,64 @@ export default function Home() {
   useEffect(() => {
     const mm = gsap.matchMedia();
   
-    mm.add("(max-width: 768px)", () => {
-      // MOBILE VIEW: Each card slides in horizontally
-      gsap.from(".card-1", {
-        scrollTrigger: {
-          trigger: ".card-1",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        x: -150,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
+    const setupAnimations = () => {
+      mm.add("(max-width: 768px)", () => {
+        gsap.fromTo(".card-1", { x: -150, opacity: 0 }, {
+          x: 0, opacity: 1, duration: 1, ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".card-1",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          }
+        });
+  
+        gsap.fromTo(".card-2", { x: 150, opacity: 0 }, {
+          x: 0, opacity: 1, duration: 1, ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".card-2",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          }
+        });
+  
+        gsap.fromTo(".card-3", { x: -150, opacity: 0 }, {
+          x: 0, opacity: 1, duration: 1, ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".card-3",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          }
+        });
       });
   
-      gsap.from(".card-2", {
-        scrollTrigger: {
-          trigger: ".card-2",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        x: 150,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
+      mm.add("(min-width: 769px)", () => {
+        gsap.fromTo(
+          [".card-1", ".card-2", ".card-3"],
+          { y: 100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            stagger: 0.3,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: "#Skills",
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
       });
+    };
   
-      gsap.from(".card-3", {
-        scrollTrigger: {
-          trigger: ".card-3",
-          start: "top 90%",
-          toggleActions: "play none none none",
-        },
-        x: -150,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out",
-      });
-    });
+    // Wait a bit to make sure everything is rendered
+    const timeout = setTimeout(setupAnimations, 100);
   
-    mm.add("(min-width: 769px)", () => {
-      // DESKTOP VIEW: All cards slide in from bottom when #Skills comes into view
-      gsap.from([".card-1", ".card-2", ".card-3"], {
-        scrollTrigger: {
-          trigger: "#Skills",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: "power2.out",
-      });
-    });
-  
-    return () => mm.revert(); // Clean up matchMedia listeners
+    return () => {
+      mm.revert();
+      clearTimeout(timeout);
+    };
   }, []);
-  
 
 
   return (
